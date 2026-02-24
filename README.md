@@ -30,7 +30,7 @@ Before coming in to lab, please download and install the following software.
     <details>
     <summary><i> What version of Python do I need? </i></summary>
 
-    We recommend at least 3.8 to ensure compatibility with the packages we will use in this class. If you already have Python, you should be able to check its version by entering the command `python --version` in your terminal. 
+    We recommend at least 3.10 to ensure compatibility with the packages we will use in this class. If you already have Python, you should be able to check its version by entering the command `python --version` (on Windows) or `python3 --version` (on Mac/Linux) in your terminal. 
 
     </details>
 
@@ -41,14 +41,14 @@ Before coming in to lab, please download and install the following software.
 
     </details>
 
-2. Make sure to check "Add python.exe to PATH".
+2. Make sure to check "Add python.exe to PATH" (on Windows).
   
     <p align="center">
     <img src="./.images/Python_install.png" alt="ik" width="400"/>
     </p>
 
-3. Click "Install Now" and finish the installation.
-4. Check that you installed Python correctly by entering the command `python` in your terminal. It should return `Python X.X (tags...`. 
+3. Click "Install Now" and finish the installation. On Mac, follow the instructions to install SSL certificates by opening the `Install Certificates.command` file in the installation folder.
+4. Check that you installed Python correctly by entering the command `python` (on Windows) or `python3` (on Mac/Linux) in your terminal. It should return `Python X.X (tags...`.  To exit from running Python in your Terminal, enter the command `quit`.
     <details>
     <summary><i> It's returning something else? </i></summary>
 
@@ -56,6 +56,8 @@ Before coming in to lab, please download and install the following software.
 
     </details>
 5. Install pip:
+
+    If you just installed Python, it may have come with pip. You can check if you have pip installed by running `C:> py -m ensurepip --upgrade` (Windows) or `python -m ensurepip --upgrade` or `python3 -m ensurepip --upgrade` (Mac/Linux). If you don't have pip already, follow these instructions:
 
     **Windows/Mac**
     - Click on this link: https://bootstrap.pypa.io/get-pip.py
