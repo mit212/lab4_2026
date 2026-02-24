@@ -7,6 +7,7 @@ Spring 2026[^1]
   - [0 (Prelab) Software Setup](#0-prelab-software-setup)
     - [0.1 Python & RTDE Library](#01-python--rtde-library)
     - [0.2 (Recommended for Windows Machines) Windows Subsystem for Linux (WSL)](#02-recommended-for-windows-machines-windows-subsystem-for-linux-wsl)
+    - [0.3 UR_RTDE Installation Instructions for Mac](#03-ur_rtde-installation-instructions-for-mac)
   - [1 Motor Modelling and Controller Design](#1-motor-modelling-and-controller-design)
   - [2 Validate Hardware Setup](#2-validate-hardware-setup)
     - [2.1 Validate Microcontroller](#21-validate-microcontroller)
@@ -73,7 +74,13 @@ Before coming in to lab, please download and install the following software.
         sudo apt install python3-pip
         ```
 
-6. Install the RTDE library by followiing the steps here: [ur_rtde Installation](https://sdurobotics.gitlab.io/ur_rtde/installation/installation.html). It might work for some Mac or Windows machines to simply run `pip install ur_rtde`, but if not follow the instructions from the link. If the Windows installation feels complex for you, look at section 0.2 below.
+6. Install the RTDE library by followiing the steps here: [ur_rtde Installation](https://sdurobotics.gitlab.io/ur_rtde/installation/installation.html). It might work for some Mac or Windows machines to simply run `pip install ur_rtde`, but if not follow the instructions from the link. If the Windows installation feels complex for you, look at section 0.2 below. Mac installations should follow section 0.3 below.
+
+Additional references:
+- [Github (Example Codes)](https://github.com/mit212/ur_2025)
+- [RTDE API Doc](https://sdurobotics.gitlab.io/ur_rtde/)
+
+In lab, we will perform a supervised run-through of controlling the UR5.
 
 ### 0.2 (Recommended for Windows Machines) Windows Subsystem for Linux (WSL)
 
@@ -99,12 +106,38 @@ For Windows:
     pip3 install ur_rtde --break-system-packages
     ```
     Tip: You can paste text from your clipboard by right-clicking in Powershell.
-   
-Additional references:
-- [Github (Example Codes)](https://github.com/mit212/ur_2024)
-- [RTDE API Doc](https://sdurobotics.gitlab.io/ur_rtde/)
 
-In lab, we will perform a supervised run-through of controlling the UR5.
+### 0.3 UR_RTDE Installation Instructions for Mac
+1. Install Homebrew if you don't have it already. Follow the instructions at https://brew.sh.
+	- Follow the "next steps" at the end of the installation to add Homebrew to your PATH
+2. On Mac, the ur_rtde library is only able to be installed in Python 3.11 and earlier. To see what version(s) of Python you have installed, in Terminal type `python` and then press the Tab key a few times. If you don't have an earlier version of Python installed already, you can download the latest available 3.11 installer here: https://www.python.org/downloads/release/python-3119/ (click 'Download macOS 64-bit universal2 installer' at the bottom of the page)
+3. Install Boost using Homebrew: 
+	- Open Terminal and enter `brew install boost`
+4. Install CMake **using Homebrew** (this will ensure that the path configuration is handled automatically):
+	- Enter `brew install cmake` in Terminal.
+	- Check that cmake was successfully installed by running `cmake --version` in Terminal.
+5. Navigate to your root folder (or the location where you want to place the ur_rtde folder) by entering `cd ~` in Terminal.
+6. We will now follow the instructions under Build on the ur_rtde website *with two critical components added*. Clone the git repo by executing these lines in Terminal one at a time:
+    ```
+    git clone https://gitlab.com/sdurobotics/ur_rtde.git
+    cd ur_rtde
+    git submodule update --init --recursive
+    ```
+7. Now, open Finder and navigate to the `ur_rtde` folder that you just created. Open `CMakeLists.txt`. Find the line that begins with `find_package(Boost` using Cmd+F. **Delete "`system`" from this line.**  Save `CMakeLists.txt` and close the file.
+8. Return to Terminal. Execute the remaining commands to build and install the ur_rtde library, **noticing that the `cmake ..` line has an additional flag**:
+	```
+    mkdir build
+	cd build
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
+	make
+	sudo make install
+    ```
+9. Look at the output in the Terminal window and note where the ur_rtde library was installed. The library only supports Python versions up to 3.11; if your installation failed, try first installing Python 3.11 (see Step 2 above) and then try building ur_rtde again.
+10. If all went well, ur_rtde should be installed! Test it out by running `test_import.py` from the example code repo [here](https://github.com/mit212/ur_2025).
+- Note: if the Python version that ur_rtde installed into is different from your *default* Python, you will need to run programs that use the ur_rtde library by:
+    - using the correct version number in your Python call, e.g., `python3.11 test_import.py`, or 
+    - using a virtual environment or version manager like pyenv, or
+    - changing your default Python version
 
 ## 1 Motor Modelling and Controller Design
 
