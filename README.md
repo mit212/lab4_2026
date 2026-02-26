@@ -77,7 +77,7 @@ Before coming in to lab, please download and install the following software.
 6. Install the RTDE library by followiing the steps here: [ur_rtde Installation](https://sdurobotics.gitlab.io/ur_rtde/installation/installation.html). It might work for some Mac or Windows machines to simply run `pip install ur_rtde`, but if not follow the instructions from the link. If the Windows installation feels complex for you, look at section 0.2 below. Mac installations should follow section 0.3 below.
 
 Additional references:
-- [Github (Example Codes)](https://github.com/mit212/ur_2025)
+- [Github (Example Codes)](https://github.com/mit212/ur_2026)
 - [RTDE API Doc](https://sdurobotics.gitlab.io/ur_rtde/)
 
 In lab, we will perform a supervised run-through of controlling the UR5.
@@ -133,7 +133,7 @@ For Windows:
 	sudo make install
     ```
 9. Look at the output in the Terminal window and note where the ur_rtde library was installed. The library only supports Python versions up to 3.11; if your installation failed, try first installing Python 3.11 (see Step 2 above) and then try building ur_rtde again.
-10. If all went well, ur_rtde should be installed! Test it out by running `test_import.py` from the example code repo [here](https://github.com/mit212/ur_2025).
+10. If all went well, ur_rtde should be installed! Test it out by running `test_import.py` from the example code repo [here](https://github.com/mit212/ur_2026).
 - Note: if the Python version that ur_rtde installed into is different from your *default* Python, you will need to run programs that use the ur_rtde library by:
     - using the correct version number in your Python call, e.g., `python3.11 test_import.py`, or 
     - using a virtual environment or version manager like pyenv, or
