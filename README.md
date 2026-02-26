@@ -145,7 +145,7 @@ Estimated time of completion: 40 min
 
 Clone this repository. Open `src/matlab/MotorModel.mlx` in MATLAB and follow along the guided tutorial to find the nominal controller gains for the motors.
 
-You can find information about the motor here: https://www.gobilda.com/modern-robotics-12vdc-motor/
+You can find information about the motor here: https://www.gobilda.com/5000-series-12vdc-motor/
 
 | :white_check_mark: CHECKOFF 1 :white_check_mark:   |
 |:---------------------------------------------------|
@@ -170,7 +170,7 @@ Clone this repository and run `robot/blink_test.cpp`. You should see the onboard
 <details> <summary> <i> Forget how to clone? </i> </summary>
 
 Please refer to the [instructions from Lab 1](
-https://github.com/mit212/lab1_2025?tab=readme-ov-file#31-git-clone).
+https://github.com/mit212/lab1_2026?tab=readme-ov-file#31-git-clone).
 
 </details>
 
